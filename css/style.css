@@ -4,102 +4,72 @@
     box-sizing: border-box;
 }
 
-.container {
-    height: 100vh;
+html {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+    font-family: Arial, sans-serif;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
 }
 
-.item {
-    float: left;
-    width: 700px;
-    height: 300px;
+#app {
+    text-align: center;
+}
+
+#carousel-container {
     position: relative;
+    width: 600px;
+    overflow: hidden;
+    margin-top: 20px;
 }
 
-.item img {
+#carousel {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.carousel-item {
+    flex: 0 0 100%;
+    display: none;
+}
+
+.carousel-item.visible {
+    display: block;
+}
+
+.carousel-img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
+    height: auto;
 }
 
-.item .text {
+.visible {
+    display: block !important;
+}
+
+#prevBtn,
+#nextBtn {
     position: absolute;
-    right: 20px;
-    bottom: 20px;
-    text-align: right;
-    color: white;
-}
-
-.thumbs {
-    float: left;
-    height: 300px;
-    background: #000;
-    position: relative;
-}
-
-.thumb {
-    height: calc((300px) / 5);
-    opacity: 0.5;
-}
-
-.thumb img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-.thumb.active {
-    border: 2px solid #ccc;
-    opacity: 1;
-}
-
-.prev, .next {
-    width: 20px;
-    height: 20px;
-    margin: 10px 0;
-    border-radius: 50%;
-    background: #ccc;
-    position: absolute;
-    left: 50%;
-    transform: translate(-50%);
+    font-size: 24px;
     cursor: pointer;
-    z-index: 999;
+    background-color: transparent;
+    border: none;
+    color: white;
+    z-index: 1;
 }
 
-.next {
-    bottom: 0;
+#prevBtn {
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
 
-/*
-EXTRA: in questo esempio gli accordion vengono creati
-usando 2 bordi di un quadratino ruotato di 45 gradi
-In una versione base si possono usare delle icone
-oppure i caratteri ∧ (&and;) e ∨ (&or;)
- */
-.prev::after {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    top: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(-45deg);
-}
-
-.next::before {
-    content: '';
-    width: 10px;
-    height: 10px;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    display: block;
-    position: absolute;
-    bottom: 35%;
-    left: 50%;
-    transform: translate(-50%) rotate(135deg);
+#nextBtn {
+    right: 20px;
+    top: 50%;
+    transform: translateY(-50%);
 }
